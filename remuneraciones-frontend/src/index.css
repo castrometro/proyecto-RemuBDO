@@ -1,0 +1,99 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Variables globales */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: rgb(255, 255, 255); /* blanco */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enlaces */
+a {
+  font-weight: 500;
+  color: #007bff; /* Azul */
+  text-decoration: inherit;
+}
+a:hover {
+  color: #0056b3; /* Azul más oscuro */
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; /* Generalmente en negrita */
+  color: black; /* Por defecto negro */
+}
+
+/* Opciones de colores para encabezados */
+.text-gray {
+  color: gray;
+}
+.text-blue {
+  color: #007bff; /* Azul */
+}
+
+/* Botones */
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.1s ease-in-out;
+}
+
+/* Botón rojo */
+.btn-red {
+  background-color: red;
+  color: white;
+}
+.btn-red:hover {
+  background-color: #cc0000; /* Rojo más oscuro */
+  transform: scale(1.05);
+}
+
+/* Botón azul */
+.btn-blue {
+  background-color: #007bff;
+  color: white;
+}
+.btn-blue:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+  transform: scale(1.05);
+}
+
+/* Botón gris */
+.btn-gray {
+  background-color: gray;
+  color: white;
+}
+.btn-gray:hover {
+  background-color: #5a5a5a; /* Gris más oscuro */
+  transform: scale(1.05);
+}
+
+/* Ajuste para el tema claro */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: black;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #0056b3; /* Azul más oscuro */
+  }
+  button {
+    background-color: gray;
+    color: white;
+  }
+}
