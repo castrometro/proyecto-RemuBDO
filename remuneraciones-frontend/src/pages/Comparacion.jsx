@@ -40,7 +40,7 @@ const Comparacion = () => {
                 {tab === "sueldos" && <ComparacionSueldos dataA={dataA} dataB={dataB} />}
                 {tab === "contrataciones" && <NuevasContrataciones dataA={dataA} dataB={dataB} />}
                 {tab === "cancelaciones" && <NuevasCancelaciones dataA={dataA} dataB={dataB} />}
-                {tab === "ausencias" && <Ausencias dataB={dataB} />}
+                {tab === "ausencias" && <Ausencias dataA={dataA} dataB={dataB} />}
             </div>
         </div>
     );

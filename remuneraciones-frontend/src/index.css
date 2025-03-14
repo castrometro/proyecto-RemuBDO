@@ -1,99 +1,103 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* Variables globales */
+/* Definir los colores de BDO */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bdo-red: #e81a3b;
+  --bdo-blue: #22409a;
+  --bdo-burgundy: #98002e;
+  --bdo-charcoal: #333333;
+  --bdo-slate: #5b6e7f;
+  --bdo-gold: #d67900;
+  --bdo-jade: #009966;
+  --bdo-ocean: #008fd2;
 
-  color-scheme: light dark;
-  color: black;
-  background-color: rgb(255, 255, 255); /* blanco */
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --text-primary: var(--bdo-charcoal);
+  --background-primary: white;
 }
 
-/* Enlaces */
+/* General */
+body {
+  font-family: "Arial", sans-serif;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+
+/* Estilos de enlaces */
 a {
   font-weight: 500;
-  color: #007bff; /* Azul */
+  color: var(--bdo-blue);
   text-decoration: inherit;
 }
 a:hover {
-  color: #0056b3; /* Azul más oscuro */
-}
-
-/* Encabezados */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; /* Generalmente en negrita */
-  color: black; /* Por defecto negro */
-}
-
-/* Opciones de colores para encabezados */
-.text-gray {
-  color: gray;
-}
-.text-blue {
-  color: #007bff; /* Azul */
+  color: #1a3372;
 }
 
 /* Botones */
-button {
+.btn {
   border-radius: 8px;
-  border: none;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
   transition: background-color 0.25s, transform 0.1s ease-in-out;
 }
 
-/* Botón rojo */
 .btn-red {
-  background-color: red;
+  background-color: var(--bdo-red);
   color: white;
 }
 .btn-red:hover {
-  background-color: #cc0000; /* Rojo más oscuro */
+  background-color: #c71734;
   transform: scale(1.05);
 }
 
-/* Botón azul */
 .btn-blue {
-  background-color: #007bff;
+  background-color: var(--bdo-blue);
   color: white;
 }
 .btn-blue:hover {
-  background-color: #0056b3; /* Azul más oscuro */
+  background-color: #1a3372;
   transform: scale(1.05);
 }
 
-/* Botón gris */
-.btn-gray {
-  background-color: gray;
+.btn-charcoal {
+  background-color: var(--bdo-charcoal);
   color: white;
 }
-.btn-gray:hover {
-  background-color: #5a5a5a; /* Gris más oscuro */
+.btn-charcoal:hover {
+  background-color: #252525;
   transform: scale(1.05);
 }
 
-/* Ajuste para el tema claro */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: black;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #0056b3; /* Azul más oscuro */
-  }
-  button {
-    background-color: gray;
-    color: white;
-  }
+/* Header */
+.header {
+  background-color: var(--bdo-red);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Tarjetas y elementos de contenido */
+.card {
+  background-color: var(--bdo-slate);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Fondos */
+.bg-bdo-red {
+  background-color: var(--bdo-red);
+}
+.bg-bdo-blue {
+  background-color: var(--bdo-blue);
+}
+.bg-bdo-charcoal {
+  background-color: var(--bdo-charcoal);
+}
+.bg-bdo-slate {
+  background-color: var(--bdo-slate);
 }

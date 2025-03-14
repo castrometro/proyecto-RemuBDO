@@ -17,47 +17,57 @@ const Comparador = () => {
             alert("Por favor, selecciona dos archivos Excel.");
             return;
         }
-
+    
         const newFiles = [];
         const newMeses = [];
         const newData = {};
-
+    
         Array.from(uploadedFiles).forEach((file) => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const workbook = XLSX.read(e.target.result, { type: "binary" });
-                const sheetName = workbook.SheetNames[0];
+                const sheetName = workbook.SheetNames[0]; 
                 const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-
+    
                 console.log(`📂 Archivo cargado: ${file.name}`);
-                console.log("🔍 Primeras filas del archivo:", sheet.slice(0, 5)); // Imprimir primeras filas
-
-                // Detectar mes desde la columna "Mes"
+                console.log("🔍 Primeras filas del archivo:", sheet.slice(0, 5)); // Ver los primeros datos
+    
                 let detectedMes = "Desconocido";
-                if (sheet.length > 0 && "Mes" in sheet[0]) {
-                    const mesNumerico = sheet[0]["Mes"];
-                    const mesesDict = {
-                        1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril",
-                        5: "Mayo", 6: "Junio", 7: "Julio", 8: "Agosto",
-                        9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
-                    };
-                    detectedMes = mesesDict[mesNumerico] || "Mes No Identificado";
+                if (sheet.length > 0) {
+                    const mesKey = Object.keys(sheet[0]).find(key => key.toLowerCase().includes("mes"));
+                    if (mesKey) {
+                        const mesNumerico = sheet[0][mesKey];
+                        const mesesDict = {
+                            1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril",
+                            5: "Mayo", 6: "Junio", 7: "Julio", 8: "Agosto",
+                            9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+                        };
+                        detectedMes = mesesDict[parseInt(mesNumerico)] || "Mes No Identificado";
+                    }
                 }
-
+    
+                console.log(`📆 Mes detectado: ${detectedMes}`);
+    
                 newFiles.push(file.name);
                 newMeses.push(detectedMes);
                 newData[detectedMes] = sheet;
-
+    
                 if (newFiles.length === uploadedFiles.length) {
                     setFiles(newFiles);
                     setMeses(newMeses);
                     setData(newData);
+    
+                    // Guardar en localStorage
+                    Object.entries(newData).forEach(([mes, datos]) => {
+                        localStorage.setItem(`data_${mes}`, JSON.stringify(datos));
+                        console.log(`💾 Guardado en localStorage: data_${mes}`);
+                    });
                 }
             };
             reader.readAsBinaryString(file);
         });
     };
-
+    
     // Redirigir a la página de comparación con los meses seleccionados
     const handleComparar = () => {
         if (mesA && mesB && mesA !== mesB) {
