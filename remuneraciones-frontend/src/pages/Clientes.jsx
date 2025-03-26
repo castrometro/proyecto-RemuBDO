@@ -44,7 +44,7 @@ const Clientes = () => {
                                         )}
                                     </td>
                                     <td className="p-2 text-center">
-                                        <Link to={`/clientes/${cliente.id}`} className="text-blue-400 hover:underline">
+                                        <Link to={`/menu/clientes/${cliente.id}`} className="text-blue-400 hover:underline">
                                             Ver Cliente
                                         </Link>
                                     </td>

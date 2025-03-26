@@ -10,8 +10,8 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Login />} />
+                <Route path="/menu" element={<Layout />}>
                     <Route index element={<Clientes />} />
                     <Route path="clientes/:id" element={<ClienteMenu />} />
                     <Route path="clientes/:id/comparador" element={<Comparador />} />

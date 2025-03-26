@@ -6,7 +6,7 @@ export default function LoginForm() {
     const entrar = () => {
         alert('Ingresando...');
         //redireccionar a la nueva pagina -> menu
-        Navigate('/');
+        Navigate('/menu');
     }
 
     return (
